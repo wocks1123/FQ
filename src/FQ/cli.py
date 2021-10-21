@@ -8,6 +8,9 @@ from FQ.Sender import run_sender
 @click.command("send")
 @click.option('--src', help='list of video sources')
 def send(src):
+    if not src:
+        print("[ERROR] enter list of video sources...")
+        exit(1)
     run_sender(src)
 
 
@@ -17,12 +20,17 @@ def queue():
 
 
 @click.group()
-def main():
+def cli():
     pass
 
 
-main.add_command(send)
-main.add_command(queue)
+cli.add_command(send)
+cli.add_command(queue)
+
+
+def main():
+    cli.main()
+
 
 if __name__ == '__main__':
     main()
