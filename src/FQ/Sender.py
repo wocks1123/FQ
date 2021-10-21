@@ -5,19 +5,17 @@ import curses
 import os
 
 import cv2
-from dotenv import load_dotenv
 import zmq, zmq.asyncio
 
 from FQ.FrameDecoder import FrameDecoder
-from FQ.Utils import to_hhmmssfff
-
-
-load_dotenv('.fq')
+from FQ.Utils import load_config, to_hhmmssfff
 
 
 class FrameSender:
 
     def __init__(self, video_sources, stdscr=None):
+        load_config()
+
         self.stdscr = stdscr
 
         self.video_sources = video_sources

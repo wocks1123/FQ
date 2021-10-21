@@ -1,3 +1,14 @@
+from dotenv import load_dotenv
+
+
+def load_config():
+    ret = load_dotenv('.fq')
+
+    if not ret:
+        print("ERROR")
+        exit(1)
+
+
 
 def to_hhmmssfff(t):
     h = int(t / 3600)

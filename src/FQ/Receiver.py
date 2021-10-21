@@ -5,15 +5,14 @@ from dotenv import load_dotenv
 import zmq, zmq.asyncio
 
 from FQ.FrameDecoder import FrameDecoder
-from FQ.Utils import timeformat_to_seconds
-
-
-load_dotenv('.fq')
+from FQ.Utils import load_config, timeformat_to_seconds
 
 
 class FrameReceiver:
 
     def __init__(self, *, video_src, start_time, end_time, fps):
+        load_config()
+
         self.ctx = zmq.Context()
 
         self.fps = fps

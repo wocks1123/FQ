@@ -8,16 +8,15 @@ import curses
 from curses import wrapper
 from queue import Queue
 
-from FQ.Utils import timeformat_to_seconds
-
-
-load_dotenv(".fq")
+from FQ.Utils import load_config, timeformat_to_seconds
 
 
 class FrameQueue:
-    MAX_SIZE = 9000 #
+    MAX_SIZE = 9000
 
     def __init__(self, stdscr=None):
+        load_config()
+
         self.stdscr = stdscr
         self.ctx = zmq.asyncio.Context()
 
